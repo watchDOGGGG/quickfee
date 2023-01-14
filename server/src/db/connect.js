@@ -15,17 +15,3 @@ export const Db_connection = () => {
       throw new Error(error)
     }
 }
-
-const UsersCollection = mongoose.Schema({
-    phone:{
-        type:String
-    },
-    fullname:{
-        type:String
-    },
-    email:{
-        type:String
-    }
-
-})
-export const USERS = mongoose.model("users", UsersCollection)
