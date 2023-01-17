@@ -8,7 +8,34 @@ export class Authentication {
 
     static async login(req, res){
         const {email, password} = req.body
+        console.log(req.body)
+         return
+        if(!(email && password)) {
+            res.status(400).send("All input is required");
+        }
         
+        const user = await UsersCollection.findOne({ email });
+
+        if (user) return res.status(200).send({ message:"Login successful"});
+            // Create token
+            const token = jwt.sign(
+              { user_id: user._id, email },
+              process.env.TOKEN_KEY,
+              {
+                expiresIn: "2h",
+              }
+            )
+
+            // save user token
+            user.token = token;
+
+      // user
+        res.status(200).json(user);
+    
+         res.status(400).send("Invalid Credentials");
+   
+  // Our register logic ends here
+
     }
 
     
