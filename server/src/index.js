@@ -4,7 +4,6 @@ import {Db_connection} from './db/index.js'
 import dotenv from 'dotenv'
 
 dotenv.config()
-
 const app = express()
 Db_connection()
 app.use(express())
