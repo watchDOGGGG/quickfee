@@ -1,4 +1,4 @@
-import { UsersCollection } from "../../db/index.js"
+import { UsersCollection, SchoolsCollection } from "../../db/index.js"
 // import jwt  from "../../middleware/helpers/jwt"
 
 /**
@@ -8,8 +8,8 @@ export class Authentication {
 
     static async login(req, res){
         const {email, password} = req.body
-        console.log(req.body)
-         return
+        // console.log(req.body)
+        //  return
         if(!(email && password)) {
             res.status(400).send("All input is required");
         }
@@ -33,8 +33,6 @@ export class Authentication {
         res.status(200).json(user);
     
          res.status(400).send("Invalid Credentials");
-   
-  // Our register logic ends here
 
     }
 
@@ -59,4 +57,43 @@ export class Authentication {
         res.status(200).send({ message: 'User created'})
     }
 
+
+
+
+
+    static async schoolsignup(req, res){
+      const { schoolname, email, phone, admin, password} = req.body;
+
+      
+      const existingSchool = await SchoolsCollection.findOne({ email: email})
+
+      if(existingSchool) return res.status(400).send({message: "Existing School"});
+
+      const generateRandomval = (schoolname) => {
+        let data = '1234567890';
+        let rnd = ''
+    //ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+        for (let i = 0; i < data.length; i++){
+            rnd += data.charAt(Math.floor(Math.random() * data.length));
+            if (rnd.length >= 4) {
+                return schoolname.substr(0, 3) + rnd;
+            }
+        }
+        }
+        
+        const school = await SchoolsCollection.create({ 
+          schoolname:schoolname,
+          email: email,
+          admin: admin, 
+          phone: phone,
+          password: password,
+          schoolid:generateRandomval(schoolname)
+      })
+      if(!school) return res.status(500).send({ message: 'Error creating school'})
+      res.status(200).send({ message: 'School created'})
+    
+
+        };
+
+       
 }
