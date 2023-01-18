@@ -1,9 +1,28 @@
 
-POST http://localhost:1200/v1/api/create/user HTTP/1.1
-Content-Type: application/json
+# POST http://localhost:1200/v1/api/create/user HTTP/1.1
+# Content-Type: application/json
 
-{"fullname":"John",
-    "email":"john@example.com",
-    "phone": "04903492033",
-    "password": "prince"
-}
+# {"fullname":"John",
+#     "email":"john@example.com",
+#     "phone": "04903492033",
+#     "password": "prince"
+# }
+
+# POST http://localhost:1200/v1/api/login HTTP/1.1
+# Content-Type: application/json
+
+# {
+#     "email": "john@example.com",
+#     "password": "prince"
+# }
+
+ POST http://localhost:1200/v1/api/create/school HTTP/1.1
+ Content-Type: application/json
+
+ {
+    "schoolname": "love",
+    "email": "love@example.com",
+    "phone":"273940240",
+    "admin":"hgyys",
+    "password": "gifted" 
+ }

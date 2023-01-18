@@ -9,6 +9,7 @@ Routes.get('/test',async(req,res) =>{
 })
 
 
+Routes.post("/create/school", Authentication.schoolsignup)
 Routes.post("/create/user", Authentication.signup)
 Routes.post('/login', Authentication.login)
 Routes.get("/getuser/:user", AccessToken.ValidateToken, Users.getUser)
