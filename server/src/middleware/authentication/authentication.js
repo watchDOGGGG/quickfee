@@ -59,8 +59,6 @@ export class Authentication {
 
 
 
-
-
     static async schoolsignup(req, res){
       const { schoolname, email, phone, admin, password} = req.body;
 
@@ -75,8 +73,8 @@ export class Authentication {
     //ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
         for (let i = 0; i < data.length; i++){
             rnd += data.charAt(Math.floor(Math.random() * data.length));
-            if (rnd.length >= 4) {
-                return schoolname.substr(0, 3) + rnd;
+            if (rnd.length >= 5) {
+                return schoolname.substr(0, 1) + rnd;
             }
         }
         }
@@ -92,8 +90,39 @@ export class Authentication {
       if(!school) return res.status(500).send({ message: 'Error creating school'})
       res.status(200).send({ message: 'School created'})
     
+  };
 
-        };
+  static async schoollogin(req, res){
+    const {schoolname, password} = req.body
+    // console.log(req.body)
+    //  return
+    if(!(schoolname && password)) {
+        res.status(400).send("All input is required");
+    }
+    
+    const school = await SchoolsCollection.findOne({ schoolname });
 
-       
+    if (schoolname) return res.status(200).send({ message:"Login successful"});
+        // Create token
+        const token = jwt.sign(
+          { user_id: user._id, email },
+          process.env.TOKEN_KEY,
+          {
+            expiresIn: "2h",
+          }
+        )
+
+        // save user token
+        user.token = token;
+
+  // user
+    res.status(200).json(school);
+
+     res.status(400).send("Invalid Credentials");
+
+}
+
+
+
+
 }
