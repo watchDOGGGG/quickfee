@@ -1,3 +1,4 @@
+import { Router } from "express";
 import { UsersCollection, SchoolsCollection } from "../../db/index.js"
 // import jwt  from "../../middleware/helpers/jwt"
 
@@ -122,7 +123,34 @@ export class Authentication {
 
 }
 
-
-
-
 }
+
+
+
+
+
+// Router.post('/schooldetails', async (req, res, next) => {
+//   try{
+//     const {school_bank_name, school_account_name, school_account_number} = req.body;
+//     // const result = await schema.validateAsync({school_bank_name, school_account_name, school_account_number  });
+//     const school = await schools.findOne({school_bank_name})
+//      // Employee already exists
+//      if (school_bank_name) {
+//       res.status(409); // conflict error
+//       const error = new Error('school already exists');
+//       return next(error);
+//   } 
+
+//   const newschool = await schooldetails.insert({
+//       school_bank_name,
+//       school_account_number,
+//       school_account_name,
+//       term
+//   });
+
+//   console.log('New employee has been created');
+//   res.status(201).json(newuser);
+// } catch(error) {
+//   next(error);
+// }
+// })
