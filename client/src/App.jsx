@@ -1,14 +1,18 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css'
+import Auth from './screen/auth';
+import Dashboard from './screen/dashboard';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div className="App">
-     
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/auth' element={<Auth/>}/>
+        <Route path='/dashboard/*' element={<Dashboard/>}/>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
