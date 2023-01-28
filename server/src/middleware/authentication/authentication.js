@@ -149,7 +149,7 @@ static async schooldetails (req, res) {
     try{
       const { schoolschema } = req.params;
       const { school_bank_name, school_account_name, school_account_number,term } = req.body;
-      const request = await schoolschema.validateAsync({school_bank_name, school_account_name, school_account_number,term });
+      const request = await schoolschema. validateAsync({school_bank_name, school_account_name, school_account_number,term });
       const account = await AccountsCollection.findOne({
           _id: schoolschema
       });
