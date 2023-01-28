@@ -73,7 +73,7 @@ const schoolschema= new mongoose.Schema({
     school_account_number: Joi.string()
         // .integer()
         .min(3)
-        .max(30)
+        .max(10 )
         .required(),
     term:{
         type: String,

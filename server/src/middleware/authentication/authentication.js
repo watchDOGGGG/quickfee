@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { UsersCollection, SchoolsCollection } from "../../db/index.js"
+import { UsersCollection, SchoolsCollection, AccountsCollection } from "../../db/index.js"
 // import jwt  from "../../middleware/helpers/jwt"
 
 /**
@@ -123,34 +123,61 @@ export class Authentication {
 
 }
 
-}
+
+
+static async schooldetails (req, res) {
+  const {school_bank_name, school_account_name, school_account_number,term} = req.body;
+
+  const result = await AccountsCollection.findOne({school_account_name})
+  if (result) return res.status(400).send({message: 'Exisiting account'});
+
+  const details= await AccountsCollection.create({
+    school_bank_name:school_bank_name,
+     school_account_name:school_account_name, 
+     school_account_number:  school_account_number,
+     term: term
+  })
+  if(!details){
+   return res.status(500).send({message: ' Error creating details'})
+  }
+ return res.status(200).send({message: 'Details created successfully'});
+  } catch(err){
+    return res.status(500).send({error:error})
+  }
+
+  static async updateSchool(req, res,next){
+    try{
+      const { schoolschema } = req.params;
+      const { school_bank_name, school_account_name, school_account_number,term } = req.body;
+      const request = await schoolschema.validateAsync({school_bank_name, school_account_name, school_account_number,term });
+      const account = await AccountsCollection.findOne({
+          _id: schoolschema
+      });
+  
+      // Account does not exist
+      if(!account) {
+          return next();
+        }
+
+        const updatedAccount = await  AccountsCollection.updateMany({
+          _id: schoolschema,
+          }, {  
+          $set: request},
+          { upsert: true }
+      );
+
+      res.json(updatedAccount);
+    } catch(error) {
+        next(error);
+    }
+
+    }
+  }
 
 
 
 
+    
+    
+  
 
-// Router.post('/schooldetails', async (req, res, next) => {
-//   try{
-//     const {school_bank_name, school_account_name, school_account_number} = req.body;
-//     // const result = await schema.validateAsync({school_bank_name, school_account_name, school_account_number  });
-//     const school = await schools.findOne({school_bank_name})
-//      // Employee already exists
-//      if (school_bank_name) {
-//       res.status(409); // conflict error
-//       const error = new Error('school already exists');
-//       return next(error);
-//   } 
-
-//   const newschool = await schooldetails.insert({
-//       school_bank_name,
-//       school_account_number,
-//       school_account_name,
-//       term
-//   });
-
-//   console.log('New employee has been created');
-//   res.status(201).json(newuser);
-// } catch(error) {
-//   next(error);
-// }
-// })
