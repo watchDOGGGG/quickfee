@@ -40,7 +40,7 @@ export class Schools{
 
     static async updateSchool(req, res){
         try {
-            //Write ur update code to update user schoolinfo collection.
+            //Write ur update code to update user schoolinfo collection .
         }catch(e){
             res.status(500).send({ error: e})
         }

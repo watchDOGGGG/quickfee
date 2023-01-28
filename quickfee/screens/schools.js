@@ -1,4 +1,4 @@
-import { Entypo, FontAwesome5 } from '@expo/vector-icons';
+import { AntDesign, Entypo, FontAwesome5 } from '@expo/vector-icons';
 import React from 'react';
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
@@ -20,24 +20,27 @@ const DATA = [
   },
 ];
 
-const Schools = ({navigation}) => {
+const Schools = ({ navigation }) => {
   const [value, setValue] = React.useState('')
   return (
     <SafeAreaView>
       <View style={tw`flex flex-col mt-4`}>
         <View style={tw`flex flex-row justify-center w-full`}>
-          <View style={tw`flex flex-row justify-start w-90 border border-gray-300 rounded-xl bg-gray-300`}>
+          <View style={tw`flex flex-row justify-start w-95 border border-gray-300 rounded-xl bg-gray-300`}>
             <View style={tw`flex flex-col justify-center ml-2`}>
-            <FontAwesome5 name="search" size={15}/>
+              <FontAwesome5 name="search" size={15} />
             </View>
-            <TextInput placeholder="Search school..." onChange={e => setValue(e)} value={value} style={tw`w-full border text-left p-1 text-black font-semibold `} />
+            <TextInput placeholder="Search school..." onChange={e => setValue(e)} value={value} style={tw` w-80 text-left p-1 text-black font-semibold `} />
+            <View style={tw`flex flex-col justify-center`}>
+              <AntDesign name="closecircle" size={15} color="black" />
+            </View>
           </View>
         </View>
         <View style={tw` mt-2 h-4/4`}>
           <FlatList
             data={DATA}
             renderItem={
-              ({ item }) => <SchoolComponent item={item} navigate={navigation}/>
+              ({ item }) => <SchoolComponent item={item} navigate={navigation} />
             }
             keyExtractor={item => item.id}
           />
@@ -51,16 +54,17 @@ const Schools = ({navigation}) => {
 const SchoolComponent = ({ item, navigate }) => {
   return (
     <TouchableOpacity style={tw`flex flex-row justify-start border-b border-gray-300 p-4`}
-    onPress={() => navigate.navigate("single")}
+      onPress={() => navigate.navigate("single")}
     >
-      <View style={tw`flex-row justify-center`}>
-        <FontAwesome5 name="school" size={24} color="black" />
+      <View style={tw`flex-row justify-center border rounded-30 h-9 w-9`}>
+        <View style={tw`flex flex-col justify-center`}>
+        <FontAwesome5 name="school" size={20} color="black" />
+        </View>
       </View>
       <View style={tw`ml-3 `}>
-        <Text style={tw`text-black text-center font-semibold text-lg`}>{item.title}</Text>
+        <Text style={tw`text-black text-center font-semibold text-sm`}>{item.title}</Text>
         <View style={tw`flex flex-row`}>
-          <Entypo name="dot-single" size={30} color="green" />
-          <Text style={tw`text-gray-500 font-semibold text-sm p-1`}>Active</Text>
+          <Text style={tw`text-green-500 font-semibold text-xs `}>Active</Text>
         </View>
 
       </View>
