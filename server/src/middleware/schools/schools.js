@@ -3,7 +3,6 @@ import { SchoolsCollection } from "../../db/schema/collections.js";
 export class Schools{
 
     static async getSchools(req, res){
-        // ('/school', async (req, res, next) => {
             try {
                 const allSchools = await SchoolsCollection.find({});
                 if(!allSchools){
@@ -38,11 +37,14 @@ export class Schools{
           
     }
 
-    // static async updateSchool(req, res){
-    //     try {
 
-    //     }
-    // }
+    static async updateSchool(req, res){
+        try {
+            //Write ur update code to update user schoolinfo collection.
+        }catch(e){
+            res.status(500).send({ error: e})
+        }
+    }
 
     // static async deleteSchool(req, res){
 

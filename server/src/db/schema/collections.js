@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import Joi from'joi';
+const ObjectID = mongoose.Types.ObjectId
 
 // users collection
 const user = new mongoose.Schema({
@@ -41,7 +42,6 @@ const school = new mongoose.Schema({
     },
     admin:{
         type: String,
-        required:true
     },
     password:{
         type: String,
@@ -50,6 +50,9 @@ const school = new mongoose.Schema({
     schoolid:{
         type: String,
         required:true
+    },
+    info:{
+        type:String
     },
     isverified:{
         type: String,
@@ -61,32 +64,32 @@ const school = new mongoose.Schema({
 export const SchoolsCollection = mongoose.model("schools", school)
 
 
-const schoolschema= new mongoose.Schema({
-    school_bank_name: Joi.string() 
-        .min(3)
-        .max(30)
-        .required(),
-    school_account_name: Joi.string()
-        .min(3)
-        .max(30)
-        .required(),
-    school_account_number: Joi.string()
-        // .integer()
-        .min(3)
-        .max(10 )
-        .required(),
-    term:{
-        type: String,
+const schoolInfo= new mongoose.Schema({
+    school:{
+        type: ObjectID,
+        ref:'schools',
         required:true
     },
-    process:{
+    account_num:{
+        type:Number,
+        required:true
+    },
+    bank_name:{
         type:String,
-        enum:['CLOSE', 'ACTIVE'],
-        default:'CLOSE'
-    }
+        required:true
+    },
 
+    account_name:{
+        type:String,
+        required:true
+    },
+    session:{
+        type:String,
+    }
 })
 
-export const AccountsCollection = mongoose.model("details", schoolschema)
+export const AccountsCollection = mongoose.model("school_info", schoolInfo)
+
+// When naming a service with payment its good to give it a name with payment e.g paymentINFO
 
 //Joi.object
