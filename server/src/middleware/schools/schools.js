@@ -39,7 +39,9 @@ export class Schools{
     }
 
     // static async updateSchool(req, res){
+    //     try {
 
+    //     }
     // }
 
     // static async deleteSchool(req, res){
