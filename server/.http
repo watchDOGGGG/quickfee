@@ -16,13 +16,28 @@
 #     "password": "prince"
 # }
 
- POST http://localhost:1200/v1/api/create/school HTTP/1.1
- Content-Type: application/json
+#  POST http://localhost:1200/v1/api/create/school HTTP/1.1
+#  Content-Type: application/json
 
- {
-    "schoolname": "love",
-    "email": "love@example.com",
-    "phone":"273940240",
-    "admin":"hgyys",
-    "password": "gifted" 
- }
+#  {
+#     "schoolname": "Favour",
+#     "email": "favour@example.com",
+#     "phone":"29472929474",
+#     "admin":"girls",
+#     "password": "favoured" 
+#  }
+
+#  POST http://localhost:1200/v1/api/school-login HTTP/1.1
+#     Content-Type: application/json
+
+#     {
+#         "schoolname": "love@example.com",
+#         "password": "gifted"
+#     }
+
+# GET http://localhost:1200/v1/api/getschools HTTP/1.1
+# Content-Type: application/json
+
+GET http://localhost:1200/v1/api/getschool/63d2f4beb1671fa2c31593d7 HTTP/1.1
+Content-Type: application/json
+

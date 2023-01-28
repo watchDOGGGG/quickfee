@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Joi from'joi';
 
 // users collection
 const user = new mongoose.Schema({
@@ -59,3 +60,33 @@ const school = new mongoose.Schema({
 
 export const SchoolsCollection = mongoose.model("schools", school)
 
+
+const schoolschema= new mongoose.Schema({
+    school_bank_name: Joi.string() 
+        .min(3)
+        .max(30)
+        .required(),
+    school_account_name: Joi.string()
+        .min(3)
+        .max(30)
+        .required(),
+    school_account_number: Joi.string()
+        // .integer()
+        .min(3)
+        .max(30)
+        .required(),
+    term:{
+        type: String,
+        required:true
+    },
+    process:{
+        type:String,
+        enum:['CLOSE', 'ACTIVE'],
+        default:'CLOSE'
+    }
+
+})
+
+export const AccountsCollection = mongoose.model("details", schoolschema)
+
+//Joi.object
