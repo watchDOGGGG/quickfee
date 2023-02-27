@@ -34,6 +34,16 @@ function createData(name, number, level, amount, term, payID) {
 
 const rows = [
   createData('Divine serah', 153459, 3, 24.000, "1st", "1245678"),
+  createData('Prince Randy', 153459, 3, 24.000, "1st", "1245678"),
+  createData('Joshua uzor', 153459, 3, 24.000, "1st", "1245678"),
+  createData('Costly iyang', 153459, 3, 24.000, "1st", "1245678"),
+  createData('David mark', 153459, 3, 24.000, "1st", "1245678"),
+  createData('Anthony ebri', 153459, 3, 24.000, "1st", "1245678"),
+  createData('Miler ewa', 153459, 3, 24.000, "1st", "1245678"),
+  createData('Joseph godstime', 153459, 3, 24.000, "1st", "1245678"),
+  createData('test user', 153459, 3, 24.000, "1st", "1245678"),
+  createData('user1 user1', 153459, 3, 24.000, "1st", "1245678"),
+  createData('Mary ann', 153459, 3, 24.000, "1st", "1245678"),
 ];
 
 export default function CustomizedTables() {

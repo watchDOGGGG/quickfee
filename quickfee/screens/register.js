@@ -38,7 +38,7 @@ export default function Register({ navigation }) {
                                     <Text style={tw`text-sm mb-1 text-gray-500 font-semibold`}>Full name</Text>
                                 </View>
                                 <TextInput
-                                    style={tw`border-b w-90 p-2 font-bold text-black text-lg`}
+                                    style={tw`border-b w-full text-black`}
                                     onChangeText={e => OnchangeText('fullname', e)}
                                     value={values.fullname}
                                     placeholder="Enter fullname"
@@ -46,12 +46,12 @@ export default function Register({ navigation }) {
                             </View>
 
                             {/* email */}
-                            <View style={tw`flex flex-col mt-2`}>
+                            <View style={tw`flex flex-col mt-6`}>
                                 <View>
                                     <Text style={tw`text-sm mb-1 text-gray-500 font-semibold`}>Email</Text>
                                 </View>
                                 <TextInput
-                                    style={tw`border-b w-90 p-2 font-bold text-black text-lg`}
+                                    style={tw`border-b w-full text-black`}
                                     onChangeText={e => OnchangeText('email', e)}
                                     value={values.email}
                                     placeholder="Enter email"
@@ -59,24 +59,24 @@ export default function Register({ navigation }) {
                             </View>
 
                             {/* phone */}
-                            <View style={tw`flex flex-col mt-2`}>
+                            <View style={tw`flex flex-col mt-6`}>
                                 <View>
                                     <Text style={tw`text-sm mb-1 text-gray-500 font-semibold`}>Phone</Text>
                                 </View>
                                 <TextInput
-                                    style={tw`border-b w-90 p-2 font-bold text-black text-lg`}
+                                    style={tw`border-b w-full text-black`}
                                     onChangeText={e => OnchangeText('phone', e)}
                                     value={values.phone}
                                     placeholder="Enter phone number"
                                 />
                             </View>
                             {/* password */}
-                            <View style={tw`flex flex-col mt-2`}>
+                            <View style={tw`flex flex-col mt-6`}>
                                 <View>
                                     <Text style={tw`text-sm mb-1 text-gray-500 font-semibold`}>Password</Text>
                                 </View>
                                 <TextInput
-                                    style={tw`border-b w-90 p-2 font-bold text-black text-lg`}
+                                    style={tw`border-b w-full text-black`}
                                     onChangeText={e => OnchangeText('password', e)}
                                     value={values.password}
                                     placeholder="Enter password"
@@ -84,12 +84,12 @@ export default function Register({ navigation }) {
                                 />
                             </View>
 
-                            <View style={tw`mt-2`}>
+                            <View style={tw`mt-6`}>
                                 <View>
                                     <TouchableOpacity onPress={() => navigation.navigate("login")}
-                                        style={tw`bg-black w-90 p-4 mt-3 font-semibold`}
+                                        style={tw`bg-black w-90 p-3 rounded-4 mt-3 font-semibold`}
                                     >
-                                        <Text style={tw`text-center font-bold text-white text-xl`}>Register</Text>
+                                        <Text style={tw`text-center text-white`}>Register</Text>
                                     </TouchableOpacity>
                                 </View>
                                 <Text style={tw`text-center mt-5`}>OR</Text>

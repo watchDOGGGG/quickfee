@@ -5,11 +5,14 @@ import Register from './screens/register';
 import Login from './screens/login';
 import CategoryPage from './screens/catepage';
 import Schools from './screens/schools';
-import SingleSchool from './screens/single_School';
 import Splash from './screens/splash';
+import InApp from './inapp';
 
 const Stack = createStackNavigator();
-export default function App() {
+
+export default function App({}) {
+
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -18,7 +21,12 @@ export default function App() {
             headerShown: false
           }}
         />
-        <Stack.Screen name="register" component={Register} />
+        <Stack.Screen name="register" component={Register} 
+        options={{
+          title: "Register",
+          headerShown: true
+        }}
+        />
         <Stack.Screen name="login" component={Login}
           options={{
             title: "Log in",
@@ -27,11 +35,16 @@ export default function App() {
         />
         <Stack.Screen name="schools" component={Schools}
           options={{
-            title: "",
-            headerShown: false
+            title: "Available schools",
+            headerShown: true,
+            headerShadowVisible:false,
+            headerStyle:{
+              elevation:false,
+              shadowOpacity:0
+            }
           }}
         />
-        <Stack.Screen name="single" component={SingleSchool}
+        <Stack.Screen name="single" component={InApp}
           options={{
             title: "",
             headerShown: false

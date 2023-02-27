@@ -39,8 +39,8 @@ const PayModal = () => {
                         <TextInput placeholder="Enter student name" style={tw`border border-black mt-1 p-1`}/>
                     </View>
                     <View style={tw`mt-5 flex flex-row justify-center`}>
-                        <TouchableOpacity style={tw`bg-green-400 p-2 w-2/4`}>
-                            <Text style={tw`text-center text-black font-bold`}>Done</Text>
+                        <TouchableOpacity style={tw`bg-black p-3 w-2/4`}>
+                            <Text style={tw`text-center text-white font-bold`}>Done</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -51,7 +51,7 @@ const PayModal = () => {
       <Pressable
         style={[styles.button, styles.buttonOpen]}
         onPress={() => setModalVisible(true)}>
-        <Text style={styles.textStyle}>Show Modal</Text>
+        <Text style={styles.textStyle}>Click to pay</Text>
       </Pressable>
     </View>
   );
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   },
   modalView: {
     margin: 20,
-    width:350,
+    width:400,
     backgroundColor: 'white',
     borderRadius: 20,
     padding: 35,
@@ -81,12 +81,14 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   button: {
-    borderRadius: 0,
+    borderRadius: 20,
     padding: 10,
     elevation: 2,
+    width:150
   },
   buttonOpen: {
-    backgroundColor: 'green',
+    backgroundColor: '#2374e1',
+   
   },
   buttonClose: {
     backgroundColor: '#2196F3',

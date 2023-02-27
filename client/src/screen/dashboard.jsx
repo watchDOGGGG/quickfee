@@ -11,7 +11,7 @@ export default function Dashboard() {
     <div className="w-[80%]">
       <div className="w-full">
         <div className="p-2 mt-5">
-          <h1 className="text-white text-3xl font-bold text-center">Good Morning' Prince Randy</h1>
+          <h1 className="text-white text-3xl font-bold text-center">Good Morning' Government secondary school</h1>
           <h3 className="text-white text-xl font-semibold text-center leading-4xl">welcome to your quickfee school dashboard!</h3>
         </div>
         <div className="border-t">
