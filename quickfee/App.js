@@ -7,11 +7,11 @@ import CategoryPage from './screens/catepage';
 import Schools from './screens/schools';
 import Splash from './screens/splash';
 import InApp from './inapp';
+import React from 'react'
 
 const Stack = createStackNavigator();
 
 export default function App({}) {
-
 
   return (
     <NavigationContainer>

@@ -2,23 +2,21 @@ import jwt from "jsonwebtoken";
 
 // Accecc token has two functions Generate token and validate the token
 export class AccessToken {
-  constructor(palsCredentials) {
-    this.palsCredentials = palsCredentials;
+  constructor(Credentials) {
+    this.Credentials = Credentials;
   }
 
   /**
    * Generate token receives the user credentials, stores in and return a signed token
-   * @param {object} {
-   *    userid: string,
-   *    username: string,
-   *    useremail: string
+   * @param {object} 
+   * mail: string
    * }
    * 
    */
-  static GenerateToken(palsCredentials) {
+  static GenerateToken(Credentials) {
     try {
       const payload = {
-        user: palsCredentials,
+        user: Credentials,
       };
       return jwt.sign(payload, "key", { expiresIn: "1d" });
     } catch (error) {

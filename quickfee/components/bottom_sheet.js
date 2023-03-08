@@ -1,12 +1,14 @@
 import { BottomSheet } from 'react-native-btr';
-import { View, Text, Pressable, TextInput, TouchableOpacity, FlatList } from 'react-native'
+import { View, Text, Pressable, TextInput, TouchableOpacity, FlatList, Button } from 'react-native'
 import React from 'react'
 import tw from 'twrnc'
+import RNPaystack from 'react-native-paystack';
 
 const list = [{
     id: 1,
     name: 'form'
 }]
+
 export default function BottomDrawer() {
     const [visible, setVisible] = React.useState(false);
 
@@ -14,6 +16,7 @@ export default function BottomDrawer() {
         //Toggling the visibility state of the bottom sheet
         setVisible(!visible);
     };
+
     return (
         <View>
             <Pressable

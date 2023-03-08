@@ -4,13 +4,13 @@ export class Schools{
 
     static async getSchools(req, res){
             try {
-                const allSchools = await SchoolsCollection.find({});
+                const allSchools = await SchoolsCollection.find({}).select("-password");
                 if(!allSchools){
                      return res.status(500).send({ error: 'Error Fetching Schools'})
 
                 }
-                res.status(200).json(allSchools);
-                return
+                return res.status(200).json(allSchools);
+                
             } catch(error) {
                 return res.status(500).send({ error: error})
             }
